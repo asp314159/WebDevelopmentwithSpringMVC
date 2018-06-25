@@ -1,0 +1,12 @@
+package aka.springframework.webdevelopmentwithspringmvc.repositories;
+
+import aka.springframework.webdevelopmentwithspringmvc.domain.Recipe;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ * Created by AP
+ */
+@Repository
+public interface RecipeRepository extends CrudRepository<Recipe, Long> {
+}
