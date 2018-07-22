@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.*;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -33,7 +32,7 @@ public class IndexControllerTest {
     Model model;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
 
@@ -47,7 +46,7 @@ public class IndexControllerTest {
     }
 
     @Test
-    public void getIndexPage() throws Exception {
+    public void getIndexPage() {
         Set <Recipe> recipeSet = new HashSet<>();
         recipeSet.add(new Recipe());
         Recipe recipe = new Recipe();
@@ -61,7 +60,7 @@ public class IndexControllerTest {
         String viewName = indexController.getIndexPage(model);
         assertEquals("index", viewName);
         Mockito.verify(recipeService, Mockito.times(1)).getRecipes();
-        Mockito.verify(model, Mockito.times(1)).addAttribute(eq("index"), captor.capture());
+        Mockito.verify(model, Mockito.times(1)).addAttribute(eq("recipes"), captor.capture());
         Set<Recipe> returnSet = captor.getValue();
         assertEquals(2, returnSet.size());
 

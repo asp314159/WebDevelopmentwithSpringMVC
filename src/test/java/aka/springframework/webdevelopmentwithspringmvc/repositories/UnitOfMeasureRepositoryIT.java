@@ -23,10 +23,6 @@ public class UnitOfMeasureRepositoryIT {
     @Autowired
     UnitOfMeasureRepository unitOfMeasureRepository;
 
-    @Before
-    public void setUp() throws Exception {
-    }
-
     @Test
     //@DirtiesContext //Refreshes spring context after test
     public void findByDescription() {
